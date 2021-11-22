@@ -1,0 +1,18 @@
+{
+  "highlight": {
+    "color": {
+      "pure": {
+        "value": "#F99FC7"
+      },
+      "01": {
+        "value": "#FDD9E9"
+      },
+      "02": {
+        "value": "#F66FAB"
+      },
+      "03": {
+        "value": "#FA137A"
+      }
+    }
+  }
+}

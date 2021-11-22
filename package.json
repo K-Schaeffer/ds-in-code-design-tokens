@@ -1,0 +1,23 @@
+{
+  "name": "@ds-in-code/design-tokens",
+  "version": "0.0.1",
+  "description": "Biblioteca de Design Tokens para o Curso Design System in Code da Meiuca",
+  "main": "src/index.js",
+  "author": "Will Angélico - Meiuca <will.angelico@meiuca.design>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Meiuca/ds-in-code-design-tokens.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node src/index.js",
+    "build:dev": "rm -rf dist && node src/index.js"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0",
+    "style-dictionary": "^3.0.3"
+  }
+}
