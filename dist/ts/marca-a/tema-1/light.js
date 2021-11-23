@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 17 Nov 2021 20:30:06 GMT
+ * Generated on Tue, 23 Nov 2021 17:47:28 GMT
  */
 
 export const BrandColorPure = "#1474FF";
@@ -12,13 +12,13 @@ export const ContrastColorFocus = "#F673AD";
 export const FeedbackColorWarningPure = "#9847F5";
 export const FeedbackColorWarning01 = "#D9BBFB";
 export const FeedbackColorWarning02 = "#6D469B";
-export const FeedbackColorWarning03 = "#00512D";
+export const FeedbackColorWarning03 = "#4E148F";
 export const HighlightColorPure = "#F673AD";
 export const HighlightColor01 = "#FDD9E9";
 export const HighlightColor02 = "#900945";
 export const HighlightColor03 = "#430420";
 export const NeutralSurfacePure = "#F5F5F5";
-export const NeutralSurface01 = "#000000";
+export const NeutralSurface01 = "#FFFFFF";
 export const NeutralSurface02 = "#E0E0E0";
 export const NeutralSurface03 = "#CCCCCC";
 export const NeutralElementsPure = "#292929";

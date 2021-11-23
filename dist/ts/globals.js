@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 17 Nov 2021 20:30:06 GMT
+ * Generated on Tue, 23 Nov 2021 17:47:28 GMT
  */
 
 export const RotationTilt = "90deg";
@@ -9,7 +9,12 @@ export const RotationRoll = "360deg";
 export const ScaleSmall = "5%";
 export const ScaleMedium = "25%";
 export const ScaleLarge = "50%";
-export const VelocitySlow = 0.275;
+export const VelocitySlow = "0.275s";
+export const VelocityMedium = "0.225s";
+export const VelocityFast = "0.150s";
+export const VibeSoft = "cubic-bezier(0.48, 0, 0.48, 1)";
+export const VibeEnergetic = "cubic-bezier(0.64, 0, 0.92, 1)";
+export const VibeCalm = "cubic-bezier(0.08, 0, 0.35, 1)";
 export const BorderRadiusNone = "0px";
 export const BorderRadiusSm = "8px";
 export const BorderRadiusMd = "16px";

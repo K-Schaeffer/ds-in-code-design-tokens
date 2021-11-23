@@ -1,6 +1,6 @@
 {
   "name": "@meiuca/dsc-design-tokens",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Biblioteca de Design Tokens para o Curso Design System in Code da Meiuca",
   "main": "src/index.js",
   "author": "Will Angélico - Meiuca <will.angelico@meiuca.design>",
