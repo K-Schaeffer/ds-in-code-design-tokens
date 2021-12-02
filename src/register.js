@@ -1,33 +1,44 @@
 const StyleDictionaryPackage = require('style-dictionary');
 
-function registerConfig({ brand, mode, source, buildPath }) {
-
-	let destination = !mode ? brand : mode
+function registerConfig({ current, buildPath }) {
 
 	return {
-		"source": source,
+		"source": [current.source],
 		"platforms": {
 			"web/css": {
-				"transformGroup": "tokens-css",
+				"transformGroup": "css",
 				"buildPath": buildPath.css,
-				"files": [{
-					"destination": `${destination}.css`,
-					"format": "css/variables"
-				}]
+				"files": [
+					{
+						"destination": `${current.filename}.css`,
+						"format": "css/variables",
+						"filter": "notIsObject"
+					},
+					{
+						"destination": `motions.scss`,
+						"format": "scss/mixins",
+						"filter": "isObject"
+					}
+				]
 			},
 			"web/scss": {
-				"transformGroup": "tokens-css",
+				"transformGroup": "scss",
 				"buildPath": buildPath.scss,
 				"files": [{
-					"destination": `${destination}.scss`,
+					"destination": `${current.filename}.scss`,
 					"format": "scss/variables"
+				},
+				{
+					"destination": `motions.scss`,
+					"format": "scss/mixins",
+					"filter": "isObject"
 				}]
 			},
 			"js": {
 				"transformGroup": "js",
 				"buildPath": buildPath.js,
 				"files": [{
-					"destination": `${destination}.js`,
+					"destination": `${current.filename}.js`,
 					"format": "javascript/es6"
 				}]
 			},
@@ -35,10 +46,10 @@ function registerConfig({ brand, mode, source, buildPath }) {
 				"transformGroup": "js",
 				"buildPath": buildPath.ts,
 				"files": [{
-					"destination": `${destination}.js`,
+					"destination": `${current.filename}.js`,
 					"format": "javascript/es6"
 				}, {
-					"destination": `${destination}.d.ts`,
+					"destination": `${current.filename}.d.ts`,
 					"format": "typescript/es6-declarations"
 				}],
 			}
@@ -47,18 +58,72 @@ function registerConfig({ brand, mode, source, buildPath }) {
 }
 
 function registerFormats() {
-	StyleDictionaryPackage.registerTransformGroup({
-		name: 'tokens-css',
-		transforms: ["name/cti/kebab"]
+	StyleDictionaryPackage.registerFormat({
+		name: 'scss/mixins',
+		formatter: function (dictionary, config) {
+			let output = ''
+			dictionary.allProperties.map(prop => {
+				if(prop.attributes.category == 'switch'){
+					output += `
+						@if $type == switch-${prop.attributes.type} {
+							transition-duration: ${prop.value.velocity};
+							transition-timing-function: ${prop.value.vibe};
+						}
+					`
+				}
+				if(prop.attributes.category == 'spin'){
+					output += `
+						@if $type == spin-${prop.attributes.type} {
+							transition-duration: ${prop.value.velocity};
+							transition-timing-function: ${prop.value.vibe};
+							#{$trigger} {
+								transform: rotate(${prop.value.rotation});
+							}
+						}
+					`
+				}
+				if(prop.attributes.category == 'expand'){
+					output += `
+						@if $type == spin-${prop.attributes.type} {
+							transition-duration: ${prop.value.velocity};
+							transition-timing-function: ${prop.value.vibe};
+							#{$trigger} {
+								transform: scale(${prop.value.scale});
+							}
+						}
+					`
+				}
+			});
+
+			return`
+@mixin motion-token($type, $trigger){
+	${output}
+}
+			`
+
+		}
+	})
+}
+
+function registerFilter() {
+
+	StyleDictionaryPackage.registerFilter({
+		name: 'notIsObject',
+		matcher: function (prop) {
+			return typeof prop.value !== 'object'
+		}
 	});
 
-	StyleDictionaryPackage.registerTransformGroup({
-		name: 'tokens-scss',
-		transforms: ["name/cti/kebab"]
+	StyleDictionaryPackage.registerFilter({
+		name: 'isObject',
+		matcher: function (prop) {
+			return typeof prop.value === 'object'
+		}
 	});
 }
 
 module.exports = {
 	registerConfig,
-	registerFormats
+	registerFormats,
+	registerFilter
 }

@@ -1,20 +1,8 @@
 /**
  * Do not edit directly
- * Generated on Tue, 23 Nov 2021 17:47:28 GMT
+ * Generated on Tue, 30 Nov 2021 20:55:40 GMT
  */
 
-export const RotationTilt : string;
-export const RotationFlip : string;
-export const RotationRoll : string;
-export const ScaleSmall : string;
-export const ScaleMedium : string;
-export const ScaleLarge : string;
-export const VelocitySlow : string;
-export const VelocityMedium : string;
-export const VelocityFast : string;
-export const VibeSoft : string;
-export const VibeEnergetic : string;
-export const VibeCalm : string;
 export const BorderRadiusNone : string;
 export const BorderRadiusSm : string;
 export const BorderRadiusMd : string;

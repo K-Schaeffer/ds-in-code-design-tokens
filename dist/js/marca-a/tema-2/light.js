@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 23 Nov 2021 17:47:28 GMT
+ * Generated on Tue, 30 Nov 2021 20:55:40 GMT
  */
 
 export const BrandColorPure = "#E10202";

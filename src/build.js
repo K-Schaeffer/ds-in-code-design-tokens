@@ -1,15 +1,13 @@
 const StyleDictionaryPackage = require('style-dictionary');
 const { registerConfig } = require('./register');
 
-async function buildTokens({ current, buildPath, source }) {
+async function buildTokens({ current, buildPath }) {
 
    /** Configuração para gerar os tokens */
    const StyleDictionary = StyleDictionaryPackage.extend(
       registerConfig({
-         brand: current.brand,
-         buildPath: buildPath,
-         mode: current.mode,
-         source: [source]
+         current: current,
+         buildPath: buildPath
       })
    );
 
