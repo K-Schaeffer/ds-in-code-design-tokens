@@ -1,25 +1,21 @@
-const path = require('path')
+const path = require("path");
+const { getBrands } = require("./brand");
+const { buildTokens } = require("./build");
+const { registerFilter, registerFormat } = require('./config');
 
-// const { registerFormats } = require('./register');
-const { registerFilter, registerFormats } = require('./register');
-const { getBrands } = require('./brand');
-const { buildTokens } = require('./build')
-
-/** Registra todos os formatos, templates
- * e transformers do style-dictionary */
 registerFilter();
-registerFormats();
+registerFormat();
 
-/** Busca e percorre todas as MARCAS disponíveis */
+
+// dist/scss/globals.scss
+// dist/scss/marca-a/tema-1/dark.scss
+
 getBrands().map(async function (current) {
+  const buildPath = {
+    css: path.join('dist', 'css', current.dest, path.sep),
+    scss: path.join('dist', 'scss', current.dest, path.sep),
+  };
 
-    const buildPath = {
-        css: path.join('dist', 'css', current.dest, path.sep),
-        scss: path.join('dist', 'scss', current.dest, path.sep),
-        js: path.join('dist', 'js', current.dest, path.sep),
-        ts: path.join('dist', 'ts', current.dest, path.sep),
-    };
+  await buildTokens({ current, buildPath });
 
-    /** Build os tokens */
-    await buildTokens({ current, buildPath });
-});
+})
