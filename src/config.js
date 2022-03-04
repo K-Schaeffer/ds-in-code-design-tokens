@@ -10,7 +10,8 @@ function registerConfig({ current, buildPath }) {
         "buildPath": buildPath.css,
         "files": [{
           "destination": `${current.filename}.css`,
-          "format": "css/variables"
+          "format": "css/variables",
+          "filter": "notIsObject"
         }]
       },
       "web/scss": {
