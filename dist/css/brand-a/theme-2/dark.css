@@ -1,23 +1,23 @@
 /**
  * Do not edit directly
- * Generated on Mon, 13 Jun 2022 00:33:56 GMT
+ * Generated on Mon, 13 Jun 2022 06:46:39 GMT
  */
 
 :root {
-  --brand-color-pure: #FF4848;
-  --brand-color-01: #FF9999;
-  --brand-color-02: #FF0000;
-  --brand-color-03: #CC0000;
+  --brand-color-pure: #3A8BFF;
+  --brand-color-01: #D6E7FF;
+  --brand-color-02: #0068FF;
+  --brand-color-03: #003F99;
   --contrast-color-brand: #000000;
-  --contrast-color-focus: #F673AD;
+  --contrast-color-focus: #F99FC7;
   --feedback-color-warning-pure: #C99EFA;
   --feedback-color-warning-01: #D9BBFB;
   --feedback-color-warning-02: #AE6EF7;
   --feedback-color-warning-03: #6119B2;
-  --highlight-color-pure: #FF8A00;
-  --highlight-color-01: #FFE3C2;
-  --highlight-color-02: #CC6E00;
-  --highlight-color-03: #7A4200;
+  --highlight-color-pure: #F673AD;
+  --highlight-color-01: #FDD9E9;
+  --highlight-color-02: #900945;
+  --highlight-color-03: #430420;
   --neutral-surface-pure: #292929;
   --neutral-surface-01: #000000;
   --neutral-surface-02: #666666;

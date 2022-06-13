@@ -1,10 +1,10 @@
 const path = require('path')
 const { getStyles } = require('./styles')
 const { buildTokens } = require('./build')
-const { registerFilter, registerFormat } = require('./config')
+const { registerCustomFilters, registerCustomFormats } = require('./config')
 
-registerFilter()
-registerFormat()
+registerCustomFilters()
+registerCustomFormats()
 
 // dist/scss/globals.scss
 // dist/scss/marca-a/tema-1/dark.scss

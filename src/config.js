@@ -1,4 +1,4 @@
-const StyleDictionaryPackage = require('style-dictionary')
+const StyleDictionary = require('style-dictionary')
 
 function registerConfig ({ currentStyle, buildPath }) {
   return {
@@ -35,74 +35,80 @@ function registerConfig ({ currentStyle, buildPath }) {
   }
 }
 
-function registerFilter(){
-  StyleDictionaryPackage.registerFilter({
+function registerCustomFilters () {
+  StyleDictionary.registerFilter({
     name: 'isObject',
-    matcher: function(token) {
+    matcher: function (token) {
       return typeof token.value === 'object';
     }
   });
 
-  StyleDictionaryPackage.registerFilter({
+  StyleDictionary.registerFilter({
     name: 'notIsObject',
-    matcher: function(token) {
+    matcher: function (token) {
       return typeof token.value !== 'object';
     }
   })
 }
 
-function registerFormat(){
-  StyleDictionaryPackage.registerFormat({
+function registerCustomFormats () {
+  StyleDictionary.registerFormat({
     name: 'scss/mixin',
-    formatter: function({dictionary}) {
+    formatter: function ({dictionary}) {
       let output = ''
+
       dictionary.allProperties.map(prop => {
-        if(prop.attributes.category == 'switch'){
-					output += `
-						@if $type == switch-${prop.attributes.type} {
-							transition-duration: ${prop.value.velocity};
-							transition-timing-function: ${prop.value.vibe};
-						}
-					`
-				}
-				if(prop.attributes.category == 'spin'){
-					output += `
-						@if $type == spin-${prop.attributes.type} {
-							transition-duration: ${prop.value.velocity};
-							transition-timing-function: ${prop.value.vibe};
-							#{$trigger} {
-								transform: rotate(${prop.value.rotation});
-							}
-						}
-					`
-				}
-				if(prop.attributes.category == 'expand'){
-					output += `
-						@if $type == expand-${prop.attributes.type} {
-							transition-duration: ${prop.value.velocity};
-							transition-timing-function: ${prop.value.vibe};
-							#{$trigger} {
-								transform: scale(${prop.value.scale});
-							}
-						}
-					`
-				}
+        const { category } = prop.attributes
+
+        switch (category) {
+          case 'switch':
+            output += `
+  @if $type == ${category}-${prop.attributes.type} {
+    transition-duration: ${prop.value.velocity};
+    transition-timing-function: ${prop.value.vibe};
+  }
+					  `
+            break
+          case 'spin': 
+            output += `
+  @if $type == ${category}-${prop.attributes.type} {
+    transition-duration: ${prop.value.velocity};
+    transition-timing-function: ${prop.value.vibe};
+
+    #{$trigger} {
+      transform: rotate(${prop.value.rotation});
+    }
+  }
+            `
+            break
+          case 'expand':
+            output += `
+  @if $type == ${category}-${prop.attributes.type} {
+    transition-duration: ${prop.value.velocity};
+    transition-timing-function: ${prop.value.vibe};
+
+    #{$trigger} {
+      transform: scale(${prop.value.scale});
+    }
+  }
+            `
+            break
+          default:
+            break
+        }
       })
 
-      //  @include motion-token(spin-fast, '.actived')
-
       return `
-@mixin motion-token($type, $trigger){
+@mixin motion-token ($type, $trigger) {
   ${output}
 }
-
-      `;
+      `
     }
   })
 }
 
 module.exports = {
   registerConfig,
-  registerFilter,
-  registerFormat
+  registerCustomFilters,
+  registerCustomFormats
 }
