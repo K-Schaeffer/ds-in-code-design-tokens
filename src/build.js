@@ -1,16 +1,13 @@
-const StyleDictionaryPackage = require('style-dictionary');
-const { registerConfig } = require('./config');
+const StyleDictionary = require('style-dictionary')
+const { registerConfig } = require('./config')
 
-async function buildTokens({ current, buildPath }) {
+async function buildTokens({ currentStyle, buildPath }) {
 
-  const StyleDictionary = StyleDictionaryPackage.extend(
-    registerConfig({
-      current: current,
-      buildPath: buildPath
-    })
-  );
+  const styleDictionary = StyleDictionary.extend(
+    registerConfig({ currentStyle, buildPath })
+  )
 
-  StyleDictionary.buildAllPlatforms()
+  styleDictionary.buildAllPlatforms()
 }
 
 module.exports = {

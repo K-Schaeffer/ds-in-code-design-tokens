@@ -1,32 +1,35 @@
-const StyleDictionaryPackage = require('style-dictionary');
+const StyleDictionaryPackage = require('style-dictionary')
 
-function registerConfig({ current, buildPath }) {
-
+function registerConfig ({ currentStyle, buildPath }) {
   return {
-    "source": [current.source],
-    "platforms": {
-      "web/css": {
-        "transformGroup": "css",
-        "buildPath": buildPath.css,
-        "files": [{
-          "destination": `${current.filename}.css`,
-          "format": "css/variables",
-          "filter": "notIsObject"
-        }]
+    source: [currentStyle.source],
+    platforms: {
+      'web/css': {
+        transformGroup: 'css',
+        buildPath: buildPath.css,
+        files: [
+          {
+            destination: `${currentStyle.filename}.css`,
+            format: 'css/variables',
+            filter: 'notIsObject'
+          }
+        ]
       },
-      "web/scss": {
-        "transformGroup": "scss",
-        "buildPath": buildPath.scss,
-        "files": [{
-          "destination": `${current.filename}.scss`,
-          "format": "scss/variables",
-          "filter": "notIsObject"
-        },
-        {
-          "destination": `mixins.scss`,
-          "format": "scss/mixin",
-          "filter": "isObject"
-        }]
+      'web/scss': {
+        transformGroup: 'scss',
+        buildPath: buildPath.scss,
+        files: [
+          {
+            destination: `${currentStyle.filename}.scss`,
+            format: 'scss/variables',
+            filter: 'notIsObject'
+          },
+          {
+            destination: `mixins.scss`,
+            format: 'scss/mixin',
+            filter: 'isObject'
+          }
+        ]
       }
     }
   }

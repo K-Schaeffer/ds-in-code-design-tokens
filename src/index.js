@@ -1,21 +1,19 @@
-const path = require("path");
-const { getBrands } = require("./brand");
-const { buildTokens } = require("./build");
-const { registerFilter, registerFormat } = require('./config');
+const path = require('path')
+const { getStyles } = require('./styles')
+const { buildTokens } = require('./build')
+const { registerFilter, registerFormat } = require('./config')
 
-registerFilter();
-registerFormat();
-
+registerFilter()
+registerFormat()
 
 // dist/scss/globals.scss
 // dist/scss/marca-a/tema-1/dark.scss
 
-getBrands().map(async function (current) {
+getStyles().map(async (currentStyle) => {
   const buildPath = {
-    css: path.join('dist', 'css', current.dest, path.sep),
-    scss: path.join('dist', 'scss', current.dest, path.sep),
-  };
+    css: path.join('dist', 'css', currentStyle.dest, path.sep),
+    scss: path.join('dist', 'scss', currentStyle.dest, path.sep),
+  }
 
-  await buildTokens({ current, buildPath });
-
+  await buildTokens({ currentStyle, buildPath })
 })
