@@ -1,17 +1,20 @@
 {
-  "name": "@meiuca/dsc-design-tokens",
-  "version": "0.0.4",
-  "description": "Biblioteca de Design Tokens para o Curso Design System in Code da Meiuca",
+  "name": "ds-in-code-design-tokens",
+  "version": "0.0.1",
+  "description": "Design Tokens library forked from @Meiuca during the Design System In Code course.",
   "main": "src/index.js",
-  "author": "Will Angélico - Meiuca <will.angelico@meiuca.design>",
+  "author": "Kauan Schaeffer - <kcb.schaeffer@gmacom>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Meiuca/ds-in-code-design-tokens"
+    "url": "https://github.com/K-Schaeffer/ds-in-code-design-tokens"
   },
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },  
   "scripts": {
     "build": "node src/index.js",
     "build:dev": "rm -rf dist && node src/index.js"
