@@ -1,6 +1,6 @@
 {
   "name": "ds-in-code-design-tokens",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Design Tokens library forked from @Meiuca during the Design System In Code course.",
   "main": "src/index.js",
   "author": "Kauan Schaeffer - <kcb.schaeffer@gmail.com>",
